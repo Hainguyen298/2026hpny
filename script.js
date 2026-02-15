@@ -60,16 +60,12 @@ function nhanLiXi() {
     document.getElementById("troll").style.display = "block";
 
     music.volume = 0.6;
-    music.play().catch(err => {
-        console.log("Không bật được nhạc:", err);
-    });
+    music.currentTime = 0;
 
-    for (let i = 0; i < 10; i++) {
-        setTimeout(() => {
-            firework(
-                rand(150, canvas.width - 150),
-                rand(150, canvas.height / 2)
-            );
-        }, i * 200);
-    }
+    music.play().then(() => {
+        console.log("Nhạc đang phát 🎶");
+    }).catch(err => {
+        console.log("Không phát được:", err);
+    });
 }
+
